@@ -1,44 +1,81 @@
-// src\controllers\base.controller.js
+// src\controllers\base.controller.js - (created by: logicinfo.com.br/ael)
 import { Repository } from '../models/repository.js'
 import { Product, Category } from '../models/entities/index.js'
 
-const modelMapping = {
-  'product': Product,
-  'category': Category
-}
-class BaseController {
+
+export class BaseController {
 
   constructor(modelName) {
 
     this.modelName = modelName
     this.repository = new Repository(modelName)
-    this.entity = modelMapping[modelName]
-    //this.entityName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
+
+    this.entityName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
   }
 
 
 
   async getAll(_, response) {
+
     try {
-        const result = await this.repository.getAll();
-        //const list = result.map(item => new this.entity(item));
-        response.status(200).send(result);
-    } catch (e) {
-        response.status(400).send(e);
-    }
-}
 
-async getById(request, response) {
+      const result = await this.repository.getAll()
+      //const list = result.map(item => new this.entity(item));
+
+      response.status(200).send(result)
+
+    } catch (e) {
+
+      response.status(400).send(e)
+
+    }
+  }
+
+
+
+  async getById(request, response) {
+
     try {
-        const result = await this.repository.getById(Number(request.params.id));
-        //const entity = this.entity(result);
-        response.status(200).send(result);
+      const result = await this.repository.getById(Number(request.params.id))
+      //const entity = this.entity(result);
+      response.status(200).send(result)
+
     } catch (e) {
-        response.status(400).send(e);
+
+      response.status(400).send(e)
+
     }
-}
+  }
 
 
+
+ /*  async getItemByKey(request, response) {
+
+    try {
+      const { key, field } = request.params
+
+      const result = await this.repository.getItemByKey(key, field)
+
+      response.status(200).send(result)
+    } catch (e) {
+      response.status(400).send(e)
+    }
+  } */
+
+
+
+  async getListByKey(request, response) {
+
+    try {
+      const { key, field } = request.params
+
+      const result = await this.repository.getListByKey(key, field)
+
+      response.status(200).send(result)
+    } catch (e) {
+      response.status(400).send(e)
+    }
+  }
 
   async create(request, response) {
 
@@ -89,5 +126,3 @@ async getById(request, response) {
     }
   }
 }
-
-export default BaseController

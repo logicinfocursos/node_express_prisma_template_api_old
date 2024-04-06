@@ -294,6 +294,11 @@ node_modules
 .env
 </pre>
 
+para forçar / atualizar as bases de dados:
+<pre>
+prisma migrate dev --create-only --name <NAME_OF_YOUR_MIGRATION>
+</pre>
+
 # referências
 
 - (node)[https://nodejs.org/en]

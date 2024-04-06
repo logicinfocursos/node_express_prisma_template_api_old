@@ -1,4 +1,4 @@
-// src\models\entities\base.entity.js
+// src\models\entities\base.entity.js - (created by: logicinfo.com.br/ael)
 export class BaseEntity {
     constructor(data) {
         for (let key in data) {
