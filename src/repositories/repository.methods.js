@@ -5,13 +5,13 @@ import { prisma } from '../services/prisma.js'
 
 export const create = async (modelName, data) => {
 
-  const user = await prisma[modelName].create({
+  const result = await prisma[modelName].create({
 
     data
 
   })
 
-  return user
+  return result
 
 }
 

@@ -15,17 +15,9 @@ class BaseRoute {
 
 
 
-  create = (request, response) => {
-
-    this.controller.createItem(request, response)
-
-  }
-
-
-
   getAll = (request, response) => {
 
-    this.controller.getAllItems(request, response)
+    this.controller.getAll(request, response)
 
   }
 
@@ -33,7 +25,15 @@ class BaseRoute {
 
   getById = (request, response) => {
 
-    this.controller.getItemById(request, response)
+    this.controller.getById(request, response)
+
+  }
+
+
+
+  create = (request, response) => {
+
+    this.controller.create(request, response)
 
   }
 
@@ -41,7 +41,7 @@ class BaseRoute {
 
   update = (request, response) => {
 
-    this.controller.updateItem(request, response)
+    this.controller.update(request, response)
 
   }
 
@@ -49,7 +49,7 @@ class BaseRoute {
 
   erase = (request, response) => {
 
-    this.controller.eraseItem(request, response)
+    this.controller.erase(request, response)
 
   }
 
@@ -64,8 +64,7 @@ class BaseRoute {
     this.router.patch('/:id?', this.update)
     this.router.delete('/:id?', this.erase)
 
-  }
-  
+  }  
 }
 
 export default BaseRoute
