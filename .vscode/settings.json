@@ -1,13 +1,8 @@
 {
     "workbench.colorCustomizations": {
-        "statusBar.background": "#ff3333",
-        "statusBar.debuggingBackground": "#ff3333",
-        "statusBar.noFolderBackground": "#ff3333",
-        "statussBar.prominentBackground": "#ff3333"
-    },
-    "liveServer.settings.port": 5501,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "eslint.validate": ["javascript"]
+        "statusBar.background": "#33ff522f",
+        "statusBar.debuggingBackground": "#33ff522f",
+        "statusBar.noFolderBackground": "#33ff522f",
+        "statussBar.prominentBackground": "#33ff522f"
+    },    
 }

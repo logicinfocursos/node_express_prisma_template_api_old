@@ -1,27 +1,27 @@
 // src\controllers\base.controller.js - (created by: logicinfo.com.br/ael)
-import { Repository } from '../models/repository.js'
-import { Product, Category } from '../models/entities/index.js'
 
 
 export class BaseController {
 
-  constructor(modelName) {
+  constructor(prismaModel, repository) {
 
-    this.modelName = modelName
-    this.repository = new Repository(modelName)
+    this.prismaModel = prismaModel
+    this.repository = repository
 
-    this.entityName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
+    this.entity = prismaModel.charAt(0).toUpperCase() + prismaModel.slice(1)
   }
 
 
 
   async getAll(_, response) {
 
+    console.log('>> 2 - BaseController - getAll: this.repository', this.repository)
+
     try {
 
       const result = await this.repository.getAll()
       //const list = result.map(item => new this.entity(item));
-
+      //console.log(">>> list:", list)
       response.status(200).send(result)
 
     } catch (e) {
@@ -37,7 +37,7 @@ export class BaseController {
 
     try {
       const result = await this.repository.getById(Number(request.params.id))
-      //const entity = this.entity(result);
+
       response.status(200).send(result)
 
     } catch (e) {
@@ -46,21 +46,6 @@ export class BaseController {
 
     }
   }
-
-
-
- /*  async getItemByKey(request, response) {
-
-    try {
-      const { key, field } = request.params
-
-      const result = await this.repository.getItemByKey(key, field)
-
-      response.status(200).send(result)
-    } catch (e) {
-      response.status(400).send(e)
-    }
-  } */
 
 
 
@@ -96,10 +81,7 @@ export class BaseController {
   async update(request, response) {
 
     try {
-      const result = await this.repository.update(
-        Number(request.params.id),
-        request.body
-      )
+      const result = await this.repository.update(Number(request.params.id), request.body)
 
       response.status(200).send(result)
 

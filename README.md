@@ -296,6 +296,7 @@ node_modules
 
 para forçar / atualizar as bases de dados:
 <pre>
+prisma migrate dev --name <NAME_OF_YOUR_MIGRATION>
 prisma migrate dev --create-only --name <NAME_OF_YOUR_MIGRATION>
 </pre>
 

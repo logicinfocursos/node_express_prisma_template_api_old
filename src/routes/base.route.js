@@ -1,6 +1,5 @@
 // src\routes\base.route.js - (created by: logicinfo.com.br/ael)
 import { Router } from 'express'
-//import productController from '../controllers/product.controller.js'
 import ProductController from '../controllers/product.controller.js'
 import CategoryController from '../controllers/category.controller.js'
 
@@ -19,7 +18,7 @@ export class BaseRoute {
 
 
   getAll = (request, response) => {
-
+    
     this.controller.getAll(request, response)
 
   }
@@ -31,13 +30,6 @@ export class BaseRoute {
     this.controller.getById(request, response)
 
   }
-
-
- /*  getItemByKey = (request, response) => {
-
-    this.controller.getItemByKey(request, response)
-
-  } */
 
 
   getListByKey = (request, response) => {
